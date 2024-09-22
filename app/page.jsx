@@ -18,11 +18,11 @@ const Home = () => {
               <span className="text-accent">Menath Nadungoda</span>
             </h1>
 
-            <p className="max-w-[700px] mb-9 text-white/80">
-              I thrive on creating create intuitive, visually appealing web apps
-              that enhance user experience. From seamless interfaces to
-              responsive, full-stack solutions, I love turning creative ideas
-              into digital realities.
+            <p className="max-w-[700px] mb-9 text-white/80 capitalize">
+              I thrive on creating intuitive, visually appealing web apps that
+              enhance user experience. From seamless interfaces to responsive,
+              full-stack solutions, I love turning creative ideas into digital
+              realities.
             </p>
 
             <div className="flex flex-col items-center gap-8 xl:flex-row">
