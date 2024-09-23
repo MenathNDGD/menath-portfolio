@@ -1,8 +1,10 @@
 "use client";
 
+import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
@@ -17,6 +19,7 @@ import {
   FaFigma,
   FaNodeJs,
   FaPhp,
+  FaBootstrap,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -24,12 +27,14 @@ import {
   SiTypescript,
   SiMongodb,
   SiMysql,
+  SiExpress,
+  SiCanva,
 } from "react-icons/si";
 
 const about = {
   title: "About Me",
   description:
-    "I excel at creating intuitive, visually appealing web applications that enhance user experience. Passionate about turning creative ideas into digital realities, I focus on seamless interfaces and responsive, full-stack solutions.",
+    "I excel at creating intuitive, visually appealing web applications that enhance user experience, focusing on seamless interfaces and responsive full-stack solutions.",
   info: [
     {
       fieldName: "Name",
@@ -67,10 +72,9 @@ const about = {
 };
 
 const experience = {
-  icon: "/assets/resume/badge.svg",
   title: "My Experience",
   description:
-    "I have 3+ years of experience in web development, working with various technologies and frameworks.",
+    "With over three years of web development experience, I have utilized various technologies and frameworks to create robust, user-friendly applications that meet client needs.",
   items: [
     {
       position: "Frontend Developer",
@@ -126,15 +130,44 @@ const experience = {
 };
 
 const education = {
-  icon: "/assets/resume/cap.svg",
   title: "My Education",
   description:
-    "I am an undergraduate with a BSc. (Hons.) in Computing & Information Systems (CIS) from the Sabaragamuwa University of Sri Lanka.",
+    "I am an undergraduate with a BSc(Hons.) in Computing & Information Systems (CIS) from the Sabaragamuwa University of Sri Lanka.",
   items: [
     {
       degree: "BSc(Hons) in Computing & Information Systems",
       university: "Sabaragamuwa University",
       date: "2022 - Present",
+    },
+    {
+      degree: "Professional Skill Program on Agility",
+      university: "SLASSCOM, Colombo",
+      date: "20223 Oct",
+    },
+    {
+      degree: "Agile Project Management",
+      university: "Coursera",
+      date: "2023 Sep",
+    },
+    {
+      degree: "Foundations of Digital Marketing & E-commerce",
+      university: "Coursera",
+      date: "2023 Aug",
+    },
+    {
+      degree: "IT Security, Defence Against the Digital Dark",
+      university: "Coursera",
+      date: "2023 May",
+    },
+    {
+      degree: "The Fundamentals of Digital Marketing",
+      university: "Google Digital Garage",
+      date: "2023 Apr",
+    },
+    {
+      degree: "Diploma in Information Technology (DIT)",
+      university: "ICBT Campus, Colombo",
+      date: "2021 Apr - 2021 Oct",
     },
     {
       degree: "General Certificate of Education (G.C.E) A/L",
@@ -152,7 +185,7 @@ const education = {
 const skills = {
   title: "My Skills",
   description:
-    "I have experience working with a variety of technologies and frameworks.",
+    "I have experience working with various technologies and frameworks, such as React, Node.js, and Firebase, enabling me to build robust and scalable applications.",
   skillList: [
     {
       icon: <FaHtml5 />,
@@ -161,6 +194,10 @@ const skills = {
     {
       icon: <FaCss3 />,
       name: "CSS 3",
+    },
+    {
+      icon: <FaBootstrap />,
+      name: "Bootstrap",
     },
     {
       icon: <SiTailwindcss />,
@@ -187,6 +224,10 @@ const skills = {
       name: "Node JS",
     },
     {
+      icon: <SiExpress />,
+      name: "Express JS",
+    },
+    {
       icon: <FaPhp />,
       name: "PHP",
     },
@@ -202,10 +243,35 @@ const skills = {
       icon: <FaFigma />,
       name: "Figma",
     },
+    {
+      icon: <SiCanva />,
+      name: "Canva",
+    },
   ],
 };
 
 const Resume = () => {
+  const [emailCopyStatus, setEmailCopyStatus] = useState("Copy Email");
+  const [phoneCopyStatus, setPhoneCopyStatus] = useState("Copy Phone");
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("nadungmenath1@gmail.com").then(() => {
+      setEmailCopyStatus("Copied!");
+      setTimeout(() => {
+        setEmailCopyStatus("Copy Email");
+      }, 5000);
+    });
+  };
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText("(+94) 76 549 3072").then(() => {
+      setPhoneCopyStatus("Copied!");
+      setTimeout(() => {
+        setPhoneCopyStatus("Copy Phone");
+      }, 5000);
+    });
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -228,38 +294,57 @@ const Resume = () => {
           </TabsList>
 
           <div className="min-h-[70vh] w-full">
-            <TabsContent
-              value="about"
-              className="w-full text-center xl:text-left"
-            >
-              <div className="flex flex-col gap-[30px]">
+            <TabsContent value="about" className="w-full">
+              <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{about.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                <p className="max-w-[750px] text-white/60 mx-auto xl:mx-0">
                   {about.description}
                 </p>
-                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[750px] mx-auto xl:mx-0">
-                  {about.info.map((item, index) => {
-                    return (
-                      <li
-                        key={index}
-                        className="flex items-center justify-center gap-4 xl:justify-start"
-                      >
-                        <span className="text-white/60">{item.fieldName}</span>
-                        <span className="text-xl">{item.fieldValue}</span>
-                      </li>
-                    );
-                  })}
-                </ul>
+                <ScrollArea className="h-[500px]">
+                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px] pr-3">
+                    {about.info.map((item, index) => {
+                      return (
+                        <li
+                          key={index}
+                          className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                        >
+                          <span className="text-lg text-accent">
+                            {item.fieldName}
+                          </span>
+                          <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+                            {item.fieldValue}
+                          </h3>
+                          {item.fieldName === "Email" && (
+                            <Button
+                              onClick={handleCopyEmail}
+                              className="px-3 py-1 mt-0 text-sm text-white bg-gray-900 rounded-lg hover:bg-gray-800"
+                            >
+                              {emailCopyStatus}
+                            </Button>
+                          )}
+                          {item.fieldName === "Mobile" && (
+                            <Button
+                              onClick={handleCopyPhone}
+                              className="px-3 py-1 mt-0 text-sm text-white bg-gray-900 rounded-lg hover:bg-gray-800"
+                            >
+                              {phoneCopyStatus}
+                            </Button>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </ScrollArea>
               </div>
             </TabsContent>
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                <p className="max-w-[750px] text-white/60 mx-auto xl:mx-0">
                   {experience.description}
                 </p>
-                <ScrollArea className="h-[400px]">
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+                <ScrollArea className="h-[500px]">
+                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px] pr-3">
                     {experience.items.map((item, index) => {
                       return (
                         <li
@@ -284,11 +369,11 @@ const Resume = () => {
             <TabsContent value="education" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{education.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                <p className="max-w-[750px] text-white/60 mx-auto xl:mx-0">
                   {education.description}
                 </p>
-                <ScrollArea className="h-[400px]">
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+                <ScrollArea className="h-[500px]">
+                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px] pr-3">
                     {education.items.map((item, index) => {
                       return (
                         <li
@@ -314,30 +399,32 @@ const Resume = () => {
               <div className="flex flex-col gap-[30px]">
                 <div className="flex flex-col gap-[30px] text-center xl:text-left">
                   <h3 className="text-4xl font-bold">{skills.title}</h3>
-                  <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                  <p className="max-w-[750px] text-white/60 mx-auto xl:mx-0">
                     {skills.description}
                   </p>
                 </div>
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
-                  {skills.skillList.map((item, index) => {
-                    return (
-                      <li key={index}>
-                        <TooltipProvider delayDuration={100}>
-                          <Tooltip>
-                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                              <div className="text-6xl transition-all duration-300 group-hover:text-accent">
-                                {item.icon}
-                              </div>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>{item.name}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      </li>
-                    );
-                  })}
-                </ul>
+                <ScrollArea className="h-[500px]">
+                  <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px] pr-3">
+                    {skills.skillList.map((item, index) => {
+                      return (
+                        <li key={index}>
+                          <TooltipProvider delayDuration={100}>
+                            <Tooltip>
+                              <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                                <div className="text-6xl transition-all duration-300 group-hover:text-accent">
+                                  {item.icon}
+                                </div>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>{item.name}</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </ScrollArea>
               </div>
             </TabsContent>
           </div>
