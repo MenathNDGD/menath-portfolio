@@ -10,49 +10,49 @@ const services = [
     title: "Web Development",
     description:
       "I build websites that serve as powerful marketing tools and bring memorable brand experiences.",
-    link: "/services/web-development",
+    link: "web-development",
   },
   {
     num: "02",
     title: "Web Applications",
     description:
       "I develop web applications that help businesses automate their processes and increase efficiency.",
-    link: "/services/web-applications",
+    link: "web-applications",
   },
   {
     num: "03",
     title: "UI/UX Design",
     description:
       "I design user-friendly interfaces that are easy to navigate and provide a delightful experience.",
-    link: "/services/ui-ux-design",
+    link: "ui-ux-design",
   },
   {
     num: "04",
     title: "Logo Design",
     description:
       "I create unique logos that help your brand stand out in the market and attract your target audience.",
-    link: "/services/logo-design",
+    link: "logo-design",
   },
   {
     num: "05",
     title: "Video Editing",
     description:
       "I edit videos that help businesses communicate their message clearly and effectively.",
-    link: "/services/video-editing",
+    link: "video-editing",
   },
   {
     num: "06",
     title: "Content Writing",
     description:
       "I write content that helps businesses attract and engage their target audience.",
-    link: "/services/content-writing",
+    link: "content-writing",
   },
   {
     num: "07",
     title: "Document Creation",
     description:
       "I create documents that help businesses communicate their message clearly and effectively.",
-    link: "/services/document-creation",
+    link: "document-creation",
   },
 ];
 
@@ -68,31 +68,29 @@ const Services = () => {
           }}
           className="grid grid-cols-1 md:grid-cols-2 gap-[60px]"
         >
-          {services.map((item, index) => {
-            return (
-              <div
-                key={index}
-                className="flex flex-col justify-center flex-1 gap-6 group"
-              >
-                <div className="flex items-center justify-between w-full">
-                  <div className="text-5xl font-extrabold text-transparent transition-all duration-500 text-outline group-hover:text-outline-hover">
-                    {item.num}
-                  </div>
-                  <Link
-                    href={item.link}
-                    className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
-                  >
-                    <BsArrowDownRight className="text-3xl text-primary" />
-                  </Link>
+          {services.map((item, index) => (
+            <div
+              key={index}
+              className="flex flex-col justify-center flex-1 gap-6 group"
+            >
+              <div className="flex items-center justify-between w-full">
+                <div className="text-5xl font-extrabold text-transparent transition-all duration-500 text-outline group-hover:text-outline-hover">
+                  {item.num}
                 </div>
-                <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500">
-                  {item.title}
-                </h2>
-                <p className="text-white/60">{item.description}</p>
-                <div className="w-full border-b border-white/20"></div>
+                <Link
+                  href={`/services/${item.link}`}
+                  className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
+                >
+                  <BsArrowDownRight className="text-3xl text-primary" />
+                </Link>
               </div>
-            );
-          })}
+              <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500">
+                {item.title}
+              </h2>
+              <p className="text-white/60">{item.description}</p>
+              <div className="w-full border-b border-white/20"></div>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>
