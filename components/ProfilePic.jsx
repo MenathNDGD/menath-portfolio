@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const ProfilePic = () => {
   return (
-    <div className="relative w-full h-full">
+    <div className="relative flex items-center justify-center w-full h-full">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{
@@ -30,7 +30,6 @@ const ProfilePic = () => {
             className="object-contain"
           />
         </motion.div>
-
         <motion.svg
           className={"w-[300px] h-[300px] xl:w-[506px] xl:h-[506px]"}
           fill={"transparent"}
@@ -41,8 +40,8 @@ const ProfilePic = () => {
             cx={"253"}
             cy={"253"}
             r={"250"}
-            stroke={"#0099ff"}
-            strokeWidth={"4"}
+            stroke={"url(#blueGradient)"}
+            strokeWidth={"6"}
             strokeLinecap={"round"}
             strokeLinejoin={"round"}
             initial={{ strokeDasharray: "24 10 0 0" }}
@@ -56,6 +55,19 @@ const ProfilePic = () => {
               repeatType: "reverse",
             }}
           />
+          <defs>
+            <linearGradient
+              id="blueGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#0033ff" /> {/* Darker Blue */}
+              <stop offset="50%" stopColor="#00aaff" /> {/* Medium Blue */}
+              <stop offset="100%" stopColor="#00ccff" /> {/* Light Blue */}
+            </linearGradient>
+          </defs>
         </motion.svg>
       </motion.div>
     </div>
