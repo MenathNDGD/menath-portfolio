@@ -14,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { PhoneInput } from "@/components/PhoneInput";
 
 const info = [
   {
@@ -45,7 +46,7 @@ const Contact = () => {
     >
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
-          <div className="order-2 xl:order-none xl:w-[54%]">
+          <div className="order-2 xl:order-none xl:w-[57%]">
             <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
               <h3 className="text-4xl text-accent">Drop Me a Line</h3>
               <p className="text-white/60">
@@ -55,10 +56,10 @@ const Contact = () => {
                 below, and I'll get back to you as soon as possible.
               </p>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <Input type="firstname" placeholder="First Name" />
-                <Input type="lastname" placeholder="Last Name" />
+                <Input type="firstname" placeholder="First Name" required />
+                <Input type="lastname" placeholder="Last Name" required />
                 <Input type="email" placeholder="Email Address" />
-                <Input type="phone" placeholder="Phone Number" />
+                <PhoneInput placeholder="Phone Number" />
               </div>
               <Select>
                 <SelectTrigger className="w-full">
