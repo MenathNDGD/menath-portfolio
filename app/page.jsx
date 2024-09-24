@@ -1,3 +1,5 @@
+"use client";
+
 import { FiDownload } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 
@@ -7,6 +9,15 @@ import ProfilePic from "@/components/ProfilePic";
 import Stats from "@/components/Stats";
 
 const Home = () => {
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/assets/myCV.pdf";
+    link.download = "Menath_Nadungoda_CV.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="h-full">
       <div className="container h-full mx-auto">
@@ -30,6 +41,7 @@ const Home = () => {
                 variant="outline"
                 size="lg"
                 className="flex items-center gap-2 uppercase"
+                onClick={handleDownload}
               >
                 <span>Downlod CV</span>
                 <FiDownload className="text-xl" />
