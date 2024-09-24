@@ -60,7 +60,7 @@ const MobileNavbar = () => {
           </Link>
         </div>
 
-        <nav className="flex flex-col items-center justify-center gap-8">
+        <nav className="flex flex-col items-center justify-center gap-8 -mt-20">
           {links.map((link, index) => {
             return (
               <Link
