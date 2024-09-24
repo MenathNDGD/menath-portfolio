@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "./ui/button";
 import { useState } from "react";
@@ -45,7 +46,14 @@ const MobileNavbar = () => {
       </SheetTrigger>
       <SheetContent className="flex flex-col">
         <div className="mt-32 mb-40 text-2xl text-center">
-          <Link href={"/"}>
+          <Link href={"/"} className="flex items-center justify-center gap-2">
+            <Image
+              src="/assets/logo.png"
+              alt="Menath Nadungoda"
+              width={40}
+              height={40}
+              className="mr-2"
+            />
             <h1 className="text-4xl font-semibold">
               Menath<span className="text-accent">.</span>
             </h1>
