@@ -120,7 +120,7 @@ const ServicePage = ({ params }) => {
               {serviceData.title}
             </h1>
             <ScrollArea className="h-[400px]">
-              <div className="text-justify">
+              <div className="text-left">
                 <p className="pr-4 text-lg text-white/60">
                   {serviceData.description1}
                 </p>
@@ -138,7 +138,7 @@ const ServicePage = ({ params }) => {
                 </p>
               </div>
             </ScrollArea>
-            <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+            <div className="flex flex-col items-center gap-2 space-y-4 md:flex-row md:space-y-0 md:space-x-4">
               <Link href="/contact">
                 <Button className="px-6 py-3 font-semibold transition-all duration-300 rounded-md text-primary bg-accent hover:bg-accent-hover">
                   Get Started
