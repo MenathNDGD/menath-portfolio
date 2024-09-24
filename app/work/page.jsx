@@ -25,8 +25,8 @@ const projects = [
     description:
       "A user-friendly car rental website designed with HTML and CSS, offering a seamless experience for customers to rent cars with ease. Explore, book, and enjoy our services effortlessly.",
     stack: [{ name: "HTML 5" }, { name: "CSS 3" }, { name: "JavaScript" }],
-    image: "/assets/work/thumb1.png",
-    live: "https://menathndgd.github.io/CarRent4U_-Front-end-_UI/",
+    image: "/assets/work/carRent4U.png",
+    live: "https://car-rent4-u-front-end-ui.vercel.app/",
     github: "https://github.com/MenathNDGD/CarRent4U_-Front-end-_UI.git",
   },
   {
@@ -41,8 +41,8 @@ const projects = [
       { name: "Tailwind CSS" },
       { name: "MySQL" },
     ],
-    image: "/assets/work/thumb1.png",
-    live: "#",
+    image: "/assets/work/lms.png",
+    live: "https://edu-quest-lms-next-js.vercel.app/sign-in",
     github: "https://github.com/MenathNDGD/EduQuest-LMS-Platform.git",
   },
   {
@@ -57,9 +57,41 @@ const projects = [
       { name: "Tailwind CSS" },
       { name: "Appwrite" },
     ],
-    image: "/assets/work/thumb1.png",
-    live: "https://care-sync-79z6uzks5-menathndgds-projects.vercel.app/",
+    image: "/assets/work/careSync.png",
+    live: "https://care-sync-three.vercel.app/",
     github: "https://github.com/MenathNDGD/CareSync.git",
+  },
+  {
+    num: "04",
+    category: "Fullstack Web",
+    title: "E-Market Hub | E-commerce Platform",
+    description:
+      "A full-stack, full-featured e-commerce platform with including both a user-facing store and an admin dashboard for managing products, orders, and users.",
+    stack: [
+      { name: "Next JS" },
+      { name: "Tailwind CSS" },
+      { name: "Redis" },
+      { name: "MongoDB" },
+    ],
+    image: "/assets/work/eComPlatform.png",
+    live: "https://mern-ecommerce-platform.vercel.app/",
+    github: "https://github.com/MenathNDGD/MERN-Ecommerce-Platform.git",
+  },
+  {
+    num: "05",
+    category: "Fullstack Web",
+    title: "EcoBin | Waste Management App",
+    description:
+      "A web application built using new technologies to provide efficient and intelligent waste management solutions by helping users to manage waste disposal smartly and sustainably.",
+    stack: [
+      { name: "React JS" },
+      { name: "CSS3" },
+      { name: "Firebase" },
+      { name: "FireStore" },
+    ],
+    image: "/assets/work/ecoBin.png",
+    live: "https://eco-bin-website.vercel.app/",
+    github: "https://github.com/MenathNDGD/EcoBin_Website.git",
   },
 ];
 
