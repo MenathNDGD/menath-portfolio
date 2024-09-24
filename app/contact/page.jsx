@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,27 +15,70 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+// INFO: Improting Components
 import { PhoneInput } from "@/components/PhoneInput";
+import MessageDialog from "@/components/MessageDialog";
 
 const info = [
   {
     icon: <FaPhoneAlt />,
     title: "Phone",
     description: "(+94) 76 549 3072",
+    action: () => (window.location.href = "tel:+94765493072"),
   },
   {
     icon: <FaEnvelope />,
     title: "Email",
     description: "nadungmenath1@gmail.com",
+    action: () => (window.location.href = "mailto:nadungmenath1@gmail.com"),
   },
   {
     icon: <FaMapMarkedAlt />,
     title: "Location",
     description: "Galle, Sri Lanka",
+    action: () =>
+      window.open(
+        "https://www.google.com/maps/search/?api=1&query=Galle,+Sri+Lanka",
+        "_blank"
+      ),
   },
 ];
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      service: "",
+      message: "",
+    });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -46,8 +90,11 @@ const Contact = () => {
     >
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
-          <div className="order-2 xl:order-none xl:w-[57%]">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+          <div className="order-2 xl:order-none xl:w-[58%]">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
+            >
               <h3 className="text-4xl text-accent">Drop Me a Line</h3>
               <p className="text-white/60">
                 Have a project in mind or just want to say hello? Feel free to
@@ -56,12 +103,44 @@ const Contact = () => {
                 below, and I'll get back to you as soon as possible.
               </p>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <Input type="firstname" placeholder="First Name" required />
-                <Input type="lastname" placeholder="Last Name" required />
-                <Input type="email" placeholder="Email Address" />
-                <PhoneInput placeholder="Phone Number" />
+                <Input
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  required
+                />
+                <Input
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  required
+                />
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+                <PhoneInput
+                  placeholder="Phone Number"
+                  value={formData.phone}
+                  onChange={(phone) => setFormData({ ...formData, phone })}
+                  required
+                />
               </div>
-              <Select>
+              <Select
+                onValueChange={(value) =>
+                  setFormData({ ...formData, service: value })
+                }
+                value={formData.service}
+                required
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a Service" />
                 </SelectTrigger>
@@ -81,31 +160,34 @@ const Contact = () => {
               <Textarea
                 className="h-[200px]"
                 placeholder="Type your message here..."
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                required
               />
-              <Button size="md" className="max-w-40">
+              <Button size="md" className="max-w-40" type="submit">
                 Send Message
               </Button>
             </form>
           </div>
           <div className="flex items-center flex-1 order-1 mb-8 xl:justify-end xl:order-none xl:mb-0">
             <ul className="flex flex-col gap-10">
-              {info.map((item, index) => {
-                return (
-                  <li key={index} className="flex items-center gap-6">
-                    <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-accent rounded-full flex items-center justify-center">
-                      <div className="text-[28px]">{item.icon}</div>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-white/60">{item.title}</p>
-                      <h3 className="text-xl">{item.description}</h3>
-                    </div>
-                  </li>
-                );
-              })}
+              {info.map((item, index) => (
+                <li key={index} className="flex items-center gap-6">
+                  <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-accent rounded-full flex items-center justify-center">
+                    <div className="text-[28px]">{item.icon}</div>
+                  </div>
+                  <div className="flex-1 cursor-pointer" onClick={item.action}>
+                    <p className="text-white/60">{item.title}</p>
+                    <h3 className="text-xl">{item.description}</h3>
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
       </div>
+      <MessageDialog isOpen={dialogOpen} onClose={handleCloseDialog} />
     </motion.section>
   );
 };
