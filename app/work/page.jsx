@@ -41,7 +41,7 @@ const projects = [
       { name: "Tailwind CSS" },
       { name: "MySQL" },
     ],
-    image: "/assets/work/lms.png",
+    image: "/assets/work/eduQuest.png",
     live: "https://edu-quest-lms-next-js.vercel.app/sign-in",
     github: "https://github.com/MenathNDGD/EduQuest-LMS-Platform.git",
   },
@@ -133,7 +133,6 @@ const Work = () => {
                       className="px-2 py-1 text-xl font-semibold transition-all duration-300 rounded-full text-primary bg-accent hover:bg-accent-hover"
                     >
                       {item.name}
-                      {/* {index !== project.stack.length - 1 && ","} */}
                     </li>
                   );
                 })}
@@ -189,10 +188,10 @@ const Work = () => {
                       <div className="absolute top-0 bottom-0 z-10 w-full h-full bg-black/10"></div>
                       <div className="relative w-full h-full">
                         <Image
-                          src={project.image}
+                          src={item.image}
                           fill
                           className="object-cover"
-                          alt={project.title}
+                          alt={item.title}
                         />
                       </div>
                     </div>
