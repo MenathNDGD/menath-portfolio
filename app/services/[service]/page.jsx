@@ -153,7 +153,7 @@ const ServicePage = ({ params }) => {
           </div>
           <div className="w-full xl:w-[50%]">
             <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/10 rounded-[50px]">
-              <div className="absolute top-0 bottom-0 z-10 w-full h-full bg-black/10"></div>
+              <div className="absolute top-0 bottom-0 z-10 w-full h-full bg-black/10 rounded-[50px]"></div>
               <div className="relative w-full h-full">
                 <Image
                   src={serviceData.image}
