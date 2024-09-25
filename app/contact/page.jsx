@@ -36,10 +36,10 @@ const info = [
   {
     icon: <FaMapMarkedAlt />,
     title: "Location",
-    description: "Galle, Sri Lanka",
+    description: "Colombo, Sri Lanka",
     action: () =>
       window.open(
-        "https://www.google.com/maps/search/?api=1&query=Galle,+Sri+Lanka",
+        "https://www.google.com/maps/search/?api=1&query=Colombo,+Sri+Lanka",
         "_blank"
       ),
   },
@@ -159,7 +159,7 @@ const Contact = () => {
               </Select>
               <Textarea
                 className="h-[200px]"
-                placeholder="Type your message here..."
+                placeholder="What’s on your mind? Let me know here..."
                 name="message"
                 value={formData.message}
                 onChange={handleInputChange}
