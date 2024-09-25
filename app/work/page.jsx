@@ -7,6 +7,16 @@ import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { BsArrowUpRight, BsGithub } from "react-icons/bs";
+import { FaHtml5, FaCss3, FaJs, FaReact } from "react-icons/fa";
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiMysql,
+  SiAppwrite,
+  SiMongodb,
+  SiRedis,
+  SiFirebase,
+} from "react-icons/si";
 import {
   Tooltip,
   TooltipContent,
@@ -24,7 +34,11 @@ const projects = [
     title: "CarRent4U | Car Rental Website",
     description:
       "A user-friendly car rental website designed with HTML and CSS, offering a seamless experience for customers to rent cars with ease. Explore, book, and enjoy our services effortlessly.",
-    stack: [{ name: "HTML 5" }, { name: "CSS 3" }, { name: "JavaScript" }],
+    stack: [
+      { icon: <FaHtml5 />, name: "HTML 5" },
+      { icon: <FaCss3 />, name: "CSS 3" },
+      { icon: <FaJs />, name: "JavaScript" },
+    ],
     image: "/assets/work/carRent4U.png",
     live: "https://car-rent4-u-front-end-ui.vercel.app/",
     github: "https://github.com/MenathNDGD/CarRent4U_-Front-end-_UI.git",
@@ -36,10 +50,10 @@ const projects = [
     description:
       "A Learning Management System (LMS) built with Next.js and React for a seamless user experience, integrated with Stripe for secure payments, and Mux for high-quality video streaming.",
     stack: [
-      { name: "Next JS" },
-      { name: "React JS" },
-      { name: "Tailwind CSS" },
-      { name: "MySQL" },
+      { icon: <SiNextdotjs />, name: "Next JS" },
+      { icon: <FaReact />, name: "React JS" },
+      { icon: <SiTailwindcss />, name: "Tailwind CSS" },
+      { icon: <SiMysql />, name: "MySQL" },
     ],
     image: "/assets/work/eduQuest.png",
     live: "https://edu-quest-lms-next-js.vercel.app/sign-in",
@@ -52,10 +66,10 @@ const projects = [
     description:
       "A modern Patient Management System streamlines patient care by managing appointments, records, and communication, offering real-time notifications and secure data handling.",
     stack: [
-      { name: "Next JS" },
-      { name: "React JS" },
-      { name: "Tailwind CSS" },
-      { name: "Appwrite" },
+      { icon: <SiNextdotjs />, name: "Next JS" },
+      { icon: <FaReact />, name: "React JS" },
+      { icon: <SiTailwindcss />, name: "Tailwind CSS" },
+      { icon: <SiAppwrite />, name: "Appwrite" },
     ],
     image: "/assets/work/careSync.png",
     live: "https://care-sync-three.vercel.app/",
@@ -68,10 +82,10 @@ const projects = [
     description:
       "A full-stack, full-featured e-commerce platform with including both a user-facing store and an admin dashboard for managing products, orders, and users.",
     stack: [
-      { name: "Next JS" },
-      { name: "Tailwind CSS" },
-      { name: "Redis" },
-      { name: "MongoDB" },
+      { icon: <SiNextdotjs />, name: "Next JS" },
+      { icon: <SiTailwindcss />, name: "Tailwind CSS" },
+      { icon: <SiRedis />, name: "Redis" },
+      { icon: <SiMongodb />, name: "MongoDB" },
     ],
     image: "/assets/work/eComPlatform.png",
     live: "https://mern-ecommerce-platform.vercel.app/",
@@ -79,15 +93,15 @@ const projects = [
   },
   {
     num: "05",
-    category: "Fullstack Web",
+    category: "Capstone Mini",
     title: "EcoBin | Waste Management App",
     description:
       "A web application built using new technologies to provide efficient and intelligent waste management solutions by helping users to manage waste disposal smartly and sustainably.",
     stack: [
-      { name: "React JS" },
-      { name: "CSS3" },
-      { name: "Firebase" },
-      { name: "FireStore" },
+      { icon: <FaReact />, name: "React JS" },
+      { icon: <FaCss3 />, name: "CSS 3" },
+      { icon: <FaJs />, name: "JavaScript" },
+      { icon: <SiFirebase />, name: "Firebase" },
     ],
     image: "/assets/work/ecoBin.png",
     live: "https://eco-bin-website.vercel.app/",
@@ -125,14 +139,25 @@ const Work = () => {
                 {project.title}
               </span>
               <p className="text-white/60">{project.description}</p>
-              <ul className="flex gap-4">
+              <ul className="flex items-center gap-4">
                 {project.stack.map((item, index) => {
                   return (
                     <li
                       key={index}
-                      className="px-2 py-1 text-xl font-semibold transition-all duration-300 rounded-full text-primary bg-accent hover:bg-accent-hover"
+                      className="items-center text-5xl transition-all duration-300 text-accent group"
                     >
-                      {item.name}
+                      <TooltipProvider delayDuration={100}>
+                        <Tooltip>
+                          <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                            <div className="text-4xl text-white group-hover:text-accent">
+                              {item.icon}
+                            </div>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>{item.name}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </li>
                   );
                 })}
