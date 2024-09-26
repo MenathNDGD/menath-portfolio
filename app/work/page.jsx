@@ -16,6 +16,7 @@ import {
   SiMongodb,
   SiRedis,
   SiFirebase,
+  SiTypescript,
 } from "react-icons/si";
 import {
   Tooltip,
@@ -53,6 +54,7 @@ const projects = [
       { icon: <SiNextdotjs />, name: "Next JS" },
       { icon: <FaReact />, name: "React JS" },
       { icon: <SiTailwindcss />, name: "Tailwind CSS" },
+      { icon: <SiTypescript />, name: "TypeScript" },
       { icon: <SiMysql />, name: "MySQL" },
     ],
     image: "/assets/work/eduQuest.png",
@@ -69,6 +71,7 @@ const projects = [
       { icon: <SiNextdotjs />, name: "Next JS" },
       { icon: <FaReact />, name: "React JS" },
       { icon: <SiTailwindcss />, name: "Tailwind CSS" },
+      { icon: <SiTypescript />, name: "TypeScript" },
       { icon: <SiAppwrite />, name: "Appwrite" },
     ],
     image: "/assets/work/careSync.png",
@@ -84,6 +87,7 @@ const projects = [
     stack: [
       { icon: <SiNextdotjs />, name: "Next JS" },
       { icon: <SiTailwindcss />, name: "Tailwind CSS" },
+      { icon: <FaJs />, name: "JavaScript" },
       { icon: <SiRedis />, name: "Redis" },
       { icon: <SiMongodb />, name: "MongoDB" },
     ],
@@ -106,6 +110,39 @@ const projects = [
     image: "/assets/work/ecoBin.png",
     live: "https://eco-bin-website.vercel.app/",
     github: "https://github.com/MenathNDGD/EcoBin_Website.git",
+  },
+  {
+    num: "06",
+    category: "Frontend Web",
+    title: "Trendify | Fashion E-commerce",
+    description:
+      "A modern and stylish e-commerce platform designed with a focus on fashion and lifestyle products, offering a seamless shopping experience for customers to explore and purchase products.",
+    stack: [
+      { icon: <FaReact />, name: "React JS" },
+      { icon: <SiTailwindcss />, name: "Tailwind CSS" },
+      { icon: <FaJs />, name: "JavaScript" },
+      { icon: <SiMongodb />, name: "MongoDB" },
+    ],
+    image: "/assets/work/trendify.png",
+    live: "https://mern-ecommerce-lake-one.vercel.app/",
+    github: "https://github.com/MenathNDGD/MERN-Ecommerce.git",
+  },
+  {
+    num: "07",
+    category: "Frontend",
+    title: "TastyTrails | Food Delivery Website",
+    description:
+      "A user-friendly food delivery website designed for offering a seamless experience for customers to order food with ease. Explore, order, and enjoy our services effortlessly.",
+    stack: [
+      { icon: <FaReact />, name: "React JS" },
+      { icon: <FaHtml5 />, name: "HTML 5" },
+      { icon: <FaCss3 />, name: "CSS 3" },
+      { icon: <FaJs />, name: "JavaScript" },
+    ],
+    image: "/assets/work/tastyTrails.png",
+    live: "https://tasty-trails-food-delivery-react-php.vercel.app/",
+    github:
+      "https://github.com/MenathNDGD/TastyTrails-FoodDelivery-ReactPHP.git",
   },
 ];
 
