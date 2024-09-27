@@ -17,6 +17,9 @@ import {
   SiRedis,
   SiFirebase,
   SiTypescript,
+  SiStripe,
+  SiPrisma,
+  SiTwilio,
 } from "react-icons/si";
 import {
   Tooltip,
@@ -56,6 +59,7 @@ const projects = [
       { icon: <SiTailwindcss />, name: "Tailwind CSS" },
       { icon: <SiTypescript />, name: "TypeScript" },
       { icon: <SiMysql />, name: "MySQL" },
+      { icon: <SiPrisma />, name: "Prisma" },
     ],
     image: "/assets/work/eduQuest.png",
     live: "https://edu-quest-lms-next-js.vercel.app/sign-in",
@@ -73,6 +77,7 @@ const projects = [
       { icon: <SiTailwindcss />, name: "Tailwind CSS" },
       { icon: <SiTypescript />, name: "TypeScript" },
       { icon: <SiAppwrite />, name: "Appwrite" },
+      { icon: <SiTwilio />, name: "Twilio" },
     ],
     image: "/assets/work/careSync.png",
     live: "https://care-sync-three.vercel.app/",
@@ -89,6 +94,7 @@ const projects = [
       { icon: <SiTailwindcss />, name: "Tailwind CSS" },
       { icon: <FaJs />, name: "JavaScript" },
       { icon: <SiRedis />, name: "Redis" },
+      { icon: <SiStripe />, name: "Stripe" },
       { icon: <SiMongodb />, name: "MongoDB" },
     ],
     image: "/assets/work/eComPlatform.png",
@@ -103,6 +109,7 @@ const projects = [
       "A web application built using new technologies to provide efficient and intelligent waste management solutions by helping users to manage waste disposal smartly and sustainably.",
     stack: [
       { icon: <FaReact />, name: "React JS" },
+      { icon: <FaHtml5 />, name: "HTML 5" },
       { icon: <FaCss3 />, name: "CSS 3" },
       { icon: <FaJs />, name: "JavaScript" },
       { icon: <SiFirebase />, name: "Firebase" },
@@ -176,7 +183,7 @@ const Work = () => {
                 {project.title}
               </span>
               <p className="text-white/60">{project.description}</p>
-              <ul className="flex items-center gap-4">
+              <ul className="flex flex-wrap items-center gap-4 md:flex-nowrap">
                 {project.stack.map((item, index) => {
                   return (
                     <li
