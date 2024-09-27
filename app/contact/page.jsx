@@ -131,6 +131,7 @@ const Contact = () => {
                   placeholder="Phone Number"
                   value={formData.phone}
                   onChange={(phone) => setFormData({ ...formData, phone })}
+                  className="flex flex-wrap items-center"
                   required
                 />
               </div>
