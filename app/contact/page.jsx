@@ -15,10 +15,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
-// INFO: Improting Components
 import { PhoneInput } from "@/components/PhoneInput";
 import MessageDialog from "@/components/MessageDialog";
+import emailjs from "emailjs-com";
 
 const info = [
   {
@@ -56,10 +55,37 @@ const Contact = () => {
   });
 
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setDialogOpen(true);
+    setIsSending(true);
+
+    const fullName = `${formData.firstName} ${formData.lastName}`;
+
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: fullName,
+          to_name: "Recipient Name",
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+      )
+      .then(
+        (result) => {
+          setDialogOpen(true);
+          setIsSending(false);
+        },
+        (error) => {
+          setIsSending(false);
+        }
+      );
   };
 
   const handleCloseDialog = () => {
@@ -97,10 +123,8 @@ const Contact = () => {
             >
               <h3 className="text-4xl text-accent">Drop Me a Line</h3>
               <p className="text-white/60">
-                Have a project in mind or just want to say hello? Feel free to
-                reach out! I'm always open to discussing new ideas,
-                collaborations, or opportunities. Simply fill out the form
-                below, and I'll get back to you as soon as possible.
+                Have a project in mind or just want to say hello? Fill out the
+                form below, and I'll get back to you as soon as possible.
               </p>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <Input
@@ -148,13 +172,21 @@ const Contact = () => {
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a Service</SelectLabel>
-                    <SelectItem value="webDev">Web Development</SelectItem>
-                    <SelectItem value="webApp">Web Applications</SelectItem>
-                    <SelectItem value="uiux">UI/UX Design</SelectItem>
-                    <SelectItem value="logo">Logo Design</SelectItem>
-                    <SelectItem value="video">Video Editing</SelectItem>
-                    <SelectItem value="content">Content Writing</SelectItem>
-                    <SelectItem value="doc">Document Creation</SelectItem>
+                    <SelectItem value="Web Development">
+                      Web Development
+                    </SelectItem>
+                    <SelectItem value="Web Applications">
+                      Web Applications
+                    </SelectItem>
+                    <SelectItem value="UI/UX Design">UI/UX Design</SelectItem>
+                    <SelectItem value="Logo Design">Logo Design</SelectItem>
+                    <SelectItem value="Video Editing">Video Editing</SelectItem>
+                    <SelectItem value="Content Writing">
+                      Content Writing
+                    </SelectItem>
+                    <SelectItem value="Document Creation">
+                      Document Creation
+                    </SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -166,8 +198,39 @@ const Contact = () => {
                 onChange={handleInputChange}
                 required
               />
-              <Button size="md" className="max-w-40" type="submit">
-                Send Message
+              <Button
+                size="md"
+                className="max-w-40"
+                type="submit"
+                disabled={isSending}
+              >
+                {isSending ? (
+                  <div className="flex items-center">
+                    <svg
+                      className="w-5 h-5 mr-2 text-white animate-spin"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                      ></path>
+                    </svg>
+                    Sending...
+                  </div>
+                ) : (
+                  "Send Message"
+                )}
               </Button>
             </form>
           </div>
