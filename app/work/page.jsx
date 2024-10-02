@@ -94,7 +94,7 @@ const projects = [
     description:
       "A full-stack, full-featured e-commerce platform with including both a user-facing store and an admin dashboard for managing products, orders, and users.",
     stack: [
-      { icon: <SiNextdotjs />, name: "Next JS" },
+      { icon: <SiReact />, name: "React JS" },
       { icon: <SiTailwindcss />, name: "Tailwind CSS" },
       { icon: <SiJavascript />, name: "JavaScript" },
       { icon: <SiRedis />, name: "Redis" },
