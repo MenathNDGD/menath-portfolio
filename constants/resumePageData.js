@@ -77,9 +77,14 @@ const experience = {
     "With over three years of web development experience, I have utilized various technologies and frameworks to create robust, user-friendly applications that meet client needs.",
   items: [
     {
+      position: "Vice President",
+      company: "SOCS | SUSL",
+      date: "Sep 2025 - Present",
+    },
+    {
       position: "Software Engineer Intern",
       company: "ICIEOS (PVT) LTD",
-      date: "Mar 2025 - Present",
+      date: "Mar 2025 - Sep 2025",
     },
     {
       position: "Undergraduate",
